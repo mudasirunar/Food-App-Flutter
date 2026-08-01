@@ -42,15 +42,147 @@ class LoginScreen extends StatelessWidget {
           ),
 
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24.0,
+              vertical: 20.0,
+            ),
             child: Column(
               children: [
                 SizedBox(height: 400),
-                TextField(
+                TextFormField(
                   decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.email),
-                    hintText: 'Email',
+                    prefixIcon: const Icon(
+                      Icons.email,
+                      color: Color.fromARGB(255, 92, 39, 176),
+                    ),
+                    hintText: 'Enter Your Email',
+                    //hint: Text('Enter Your Email', style: TextStyle(fontWeight: FontWeight.w200),),
+                    label: Text(
+                      'Email',
+                      style: TextStyle(fontWeight: FontWeight.normal),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16),
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 92, 39, 176),
+                      ),
+                    ),
                   ),
+                ),
+                const SizedBox(height: 24),
+                TextFormField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(
+                      Icons.lock,
+                      color: Color.fromARGB(255, 92, 39, 176),
+                    ),
+                    hintText: 'Enter Your Password',
+                    //hint: Text('Enter Your Email', style: TextStyle(fontWeight: FontWeight.w200),),
+                    label: Text(
+                      'Password',
+                      style: TextStyle(fontWeight: FontWeight.normal),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16),
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 92, 39, 176),
+                      ),
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Forgot Password?',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 50,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {},
+
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 92, 39, 176),
+                    ),
+                    child: Text(
+                      "Login",
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 24),
+                Row(
+                  children: [
+                    const Expanded(
+                      child: Divider(thickness: 1, color: Colors.grey),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(
+                        'Or Login With',
+                        style: TextStyle(color: Colors.black45),
+                      ),
+                    ),
+                    const Expanded(
+                      child: Divider(thickness: 1, color: Colors.grey),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image(
+                      image: AssetImage('assets/images/google_logo.png'),
+                      height: 16,
+                      width: 16,
+                    ),
+                    SizedBox(width: 24),
+                    Image(
+                      image: AssetImage('assets/images/facebook_logo.png'),
+                      height: 16,
+                      width: 16,
+                    ),
+                    SizedBox(width: 24),
+                    Image(
+                      image: AssetImage('assets/images/apple_logo.png'),
+                      height: 16,
+                      width: 16,
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Don\'t have an account? ',
+                      style: TextStyle(color: Colors.black54),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text('Register',
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 56, 27, 163),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    ),
+                  ],
                 ),
               ],
             ),
