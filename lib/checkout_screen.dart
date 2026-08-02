@@ -51,7 +51,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Item 1: Noodles
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -139,7 +138,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
             const SizedBox(height: 20),
 
-            // Item 2: Beef Burger
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -227,7 +225,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
             const SizedBox(height: 24),
 
-            // Order Instructions Section
             const Text(
               'Order Instructions',
               style: TextStyle(
@@ -252,7 +249,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
             const SizedBox(height: 24),
 
-            // Total section
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -276,18 +272,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
             const SizedBox(height: 24),
 
-            // Checkout Button
             SizedBox(
               width: double.infinity,
               height: 55,
               child: ElevatedButton(
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Order Placed Successfully!'),
-                    ),
-                  );
-                },
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 92, 39, 176),
                   shape: RoundedRectangleBorder(
@@ -307,7 +296,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
             const SizedBox(height: 16),
 
-            // Back to Menu button
             Center(
               child: GestureDetector(
                 onTap: () {
