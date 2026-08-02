@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_app/home_screen.dart';
+import 'package:project_app/checkout_screen.dart';
+import 'package:project_app/settings_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -11,23 +13,51 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   int _selectedIndex = 1;
 
+  final List<Widget> screens = [
+    const HomeScreen(),
+    const ProfileScreen(),
+    const CheckoutScreen(),
+    const SettingsScreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()),
+            );
+          },
+        ),
+        centerTitle: false,
+        title: Text(
+          'Profile',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+      child: Stack(
         clipBehavior: Clip.none,
         children: [
           Column(
             children: [
               Container(
-                height: 320,
+                height: 280,
                 width: double.infinity,
                 color: const Color.fromARGB(255, 92, 39, 176),
               ),
 
               const SizedBox(height: 70),
 
-              // User Name
               const Text(
                 'Mudasir Ali',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -35,7 +65,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               const SizedBox(height: 8),
 
-              // Delivery Address Info
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
@@ -161,7 +190,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               const SizedBox(height: 20),
 
-              // Main Action Button: My Orders
               Container(
                 height: 45,
                 width: 354,
@@ -249,9 +277,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ],
           ),
 
-          // Floating Circular Profile Picture
           Positioned(
-            top: 260,
+            top: 220,
             left: 0,
             right: 0,
             child: Center(
@@ -271,6 +298,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ],
       ),
+      ),
 
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
@@ -279,12 +307,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             _selectedIndex = index;
           });
 
-          if (index == 0) {
+          if (index != 1) {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(
-                builder: (context) => const HomeScreen(),
-              ),
+              MaterialPageRoute(builder: (context) => screens[index]),
             );
           }
         },

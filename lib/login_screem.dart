@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project_app/home_screen.dart';
+import 'package:project_app/signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -56,7 +58,6 @@ class LoginScreen extends StatelessWidget {
                       color: Color.fromARGB(255, 92, 39, 176),
                     ),
                     hintText: 'Enter Your Email',
-                    //hint: Text('Enter Your Email', style: TextStyle(fontWeight: FontWeight.w200),),
                     label: Text(
                       'Email',
                       style: TextStyle(fontWeight: FontWeight.normal),
@@ -81,7 +82,6 @@ class LoginScreen extends StatelessWidget {
                       color: Color.fromARGB(255, 92, 39, 176),
                     ),
                     hintText: 'Enter Your Password',
-                    //hint: Text('Enter Your Email', style: TextStyle(fontWeight: FontWeight.w200),),
                     label: Text(
                       'Password',
                       style: TextStyle(fontWeight: FontWeight.normal),
@@ -113,12 +113,19 @@ class LoginScreen extends StatelessWidget {
                   height: 50,
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ),
+                        (route) => false,
+                      );
+                    },
 
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 92, 39, 176),
-                     //foregroundColor: Colors.white,
-                     overlayColor: Colors.white.withValues(alpha: 0.2),
+                      overlayColor: Colors.white.withValues(alpha: 0.2),
                     ),
                     child: Text(
                       "Login",
@@ -176,7 +183,14 @@ class LoginScreen extends StatelessWidget {
                       style: TextStyle(color: Colors.black54),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignupScreen(),
+                          ),
+                        );
+                      },
                       child: Text('Register',
                       style: TextStyle(
                         color: const Color.fromARGB(255, 56, 27, 163),

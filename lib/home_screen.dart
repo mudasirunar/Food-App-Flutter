@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_app/profile_screen.dart';
+import 'package:project_app/checkout_screen.dart';
+import 'package:project_app/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,10 +13,18 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
+  final List<Widget> screens = [
+    const HomeScreen(),
+    const ProfileScreen(),
+    const CheckoutScreen(),
+    const SettingsScreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: false,
         title: Text(
           'Menu',
@@ -363,8 +373,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
 
-                    const SizedBox(width: 16), // Spacing between cards
-                    // --- CARD 3: CHICKEN ---
+                    const SizedBox(width: 16),
                     Container(
                       width: 160,
                       height: 180,
@@ -449,14 +458,13 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() {
             _selectedIndex = index;
           });
-          if (index == 1) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const ProfileScreen(),
-        ),
-      );
-    }
+
+          if (index != 0) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => screens[index]),
+            );
+          }
         },
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
@@ -493,7 +501,7 @@ class _HomeScreenState extends State<HomeScreen> {
       return Container(
         padding: const EdgeInsets.all(10),
         decoration: const BoxDecoration(
-          color: Color.fromARGB(255, 92, 39, 176), 
+          color: Color.fromARGB(255, 92, 39, 176),
           shape: BoxShape.circle,
         ),
         child: Icon(iconData, color: Colors.white, size: 24),
