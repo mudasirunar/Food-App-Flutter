@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:project_app/home_screen.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  int _selectedIndex = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -12,30 +20,34 @@ class ProfileScreen extends StatelessWidget {
           Column(
             children: [
               Container(
-                height: 380,
+                height: 320,
                 width: double.infinity,
                 color: const Color.fromARGB(255, 92, 39, 176),
               ),
 
               const SizedBox(height: 70),
 
+              // User Name
               const Text(
                 'Mudasir Ali',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
 
               const SizedBox(height: 8),
+
+              // Delivery Address Info
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(
+                children: const [
+                  Icon(
                     Icons.location_on,
-                    size: 12,
-                    color: Colors.black45,
+                    size: 14,
+                    color: Color.fromARGB(255, 92, 39, 176),
                   ),
-                  const Text(
+                  SizedBox(width: 4),
+                  Text(
                     'Karachi, Pakistan',
-                    style: TextStyle(fontSize: 12, color: Colors.black45),
+                    style: TextStyle(fontSize: 14, color: Colors.black45),
                   ),
                 ],
               ),
@@ -43,11 +55,11 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: 6),
 
               const Text(
-                'Software Engineer & Flutter Developer',
+                'Gold Member 🏆',
                 style: TextStyle(fontSize: 12, color: Colors.black45),
               ),
 
-              const SizedBox(height: 12),
+              const SizedBox(height: 16),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -66,17 +78,17 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          '24',
+                      children: const [
+                        Text(
+                          '15',
                           style: TextStyle(
                             color: Color.fromARGB(255, 90, 13, 213),
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const Text(
-                          'Posts',
+                        Text(
+                          'Orders',
                           style: TextStyle(color: Colors.black45, fontSize: 12),
                         ),
                       ],
@@ -97,17 +109,17 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          '123k',
+                      children: const [
+                        Text(
+                          '4',
                           style: TextStyle(
                             color: Color.fromARGB(255, 90, 13, 213),
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const Text(
-                          'Followers',
+                        Text(
+                          'Vouchers',
                           style: TextStyle(color: Colors.black45, fontSize: 12),
                         ),
                       ],
@@ -128,17 +140,17 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          '309',
+                      children: const [
+                        Text(
+                          '8',
                           style: TextStyle(
                             color: Color.fromARGB(255, 90, 13, 213),
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const Text(
-                          'Following',
+                        Text(
+                          'Saved Food',
                           style: TextStyle(color: Colors.black45, fontSize: 12),
                         ),
                       ],
@@ -146,7 +158,10 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 24),
+
+              const SizedBox(height: 20),
+
+              // Main Action Button: My Orders
               Container(
                 height: 45,
                 width: 354,
@@ -156,11 +171,11 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.edit, size: 14, color: Colors.white),
-                    const SizedBox(width: 10),
-                    const Text(
-                      'Edit Profile',
+                  children: const [
+                    Icon(Icons.receipt_long, size: 16, color: Colors.white),
+                    SizedBox(width: 10),
+                    Text(
+                      'My Orders',
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.white,
@@ -170,7 +185,9 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 24),
+
+              const SizedBox(height: 16),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -186,21 +203,21 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.message,
+                      children: const [
+                        Icon(
+                          Icons.location_city,
                           color: Colors.black45,
-                          size: 14,
+                          size: 16,
                         ),
-                        const SizedBox(width: 10),
-                        const Text(
-                          'Message',
+                        SizedBox(width: 8),
+                        Text(
+                          'Address',
                           style: TextStyle(fontSize: 14, color: Colors.black87),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(width: 12),
+                  const SizedBox(width: 12),
                   Container(
                     height: 45,
                     width: 171,
@@ -213,15 +230,15 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.share,
+                      children: const [
+                        Icon(
+                          Icons.credit_card,
                           color: Colors.black45,
-                          size: 14,
+                          size: 16,
                         ),
-                        const SizedBox(width: 10),
-                        const Text(
-                          'Share',
+                        SizedBox(width: 8),
+                        Text(
+                          'Payment',
                           style: TextStyle(fontSize: 14, color: Colors.black87),
                         ),
                       ],
@@ -231,16 +248,18 @@ class ProfileScreen extends StatelessWidget {
               ),
             ],
           ),
+
+          // Floating Circular Profile Picture
           Positioned(
-            top: 320,
+            top: 260,
             left: 0,
             right: 0,
             child: Center(
               child: Container(
                 height: 120,
                 width: 120,
-                decoration: BoxDecoration(
-                  color: Colors.green,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
                   shape: BoxShape.circle,
                   image: DecorationImage(
                     image: AssetImage('assets/images/profile_image.png'),
@@ -252,6 +271,61 @@ class ProfileScreen extends StatelessWidget {
           ),
         ],
       ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+
+          if (index == 0) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const HomeScreen(),
+              ),
+            );
+          }
+        },
+        type: BottomNavigationBarType.fixed,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        items: [
+          BottomNavigationBarItem(
+            icon: _buildNavIcon(Icons.home_rounded, 0),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: _buildNavIcon(Icons.person_outline_rounded, 1),
+            label: 'Profile',
+          ),
+          BottomNavigationBarItem(
+            icon: _buildNavIcon(Icons.shopping_bag_outlined, 2),
+            label: 'Cart',
+          ),
+          BottomNavigationBarItem(
+            icon: _buildNavIcon(Icons.settings_outlined, 3),
+            label: 'Settings',
+          ),
+        ],
+      ),
     );
+  }
+
+  Widget _buildNavIcon(IconData iconData, int index) {
+    bool isSelected = _selectedIndex == index;
+    if (isSelected) {
+      return Container(
+        padding: const EdgeInsets.all(10),
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(255, 92, 39, 176),
+          shape: BoxShape.circle,
+        ),
+        child: Icon(iconData, color: Colors.white, size: 24),
+      );
+    } else {
+      return Icon(iconData, color: Colors.grey, size: 24);
+    }
   }
 }
