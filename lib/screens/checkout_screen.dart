@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_app/home_screen.dart';
-import 'package:project_app/profile_screen.dart';
-import 'package:project_app/settings_screen.dart';
+import 'package:project_app/screens/home_screen.dart';
+import 'package:project_app/screens/profile_screen.dart';
+import 'package:project_app/screens/settings_screen.dart';
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
