@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_app/screens/home_screen.dart';
 import 'package:project_app/screens/signup_screen.dart';
+import 'package:project_app/utils/app_strings.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -30,7 +31,7 @@ class LoginScreen extends StatelessWidget {
                     Image.asset('assets/images/app_logo.png', height: 120),
                     const SizedBox(height: 12),
                     Text(
-                      'Welcome Back!',
+                      AppStrings.welcomeText,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 36,
@@ -57,9 +58,9 @@ class LoginScreen extends StatelessWidget {
                       Icons.email,
                       color: Color.fromARGB(255, 92, 39, 176),
                     ),
-                    hintText: 'Enter Your Email',
+                    hintText: AppStrings.emailHint,
                     label: Text(
-                      'Email',
+                      AppStrings.emailLabel,
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                     border: OutlineInputBorder(
@@ -81,9 +82,9 @@ class LoginScreen extends StatelessWidget {
                       Icons.lock,
                       color: Color.fromARGB(255, 92, 39, 176),
                     ),
-                    hintText: 'Enter Your Password',
+                    hintText: AppStrings.passwordHint,
                     label: Text(
-                      'Password',
+                      AppStrings.passwordLabel,
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                     border: OutlineInputBorder(
@@ -102,8 +103,8 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     TextButton(
                       onPressed: () {},
-                      child: const Text(
-                        'Forgot Password?',
+                      child: Text(
+                        AppStrings.forgetPassword,
                         style: TextStyle(color: Colors.black),
                       ),
                     ),
@@ -128,7 +129,7 @@ class LoginScreen extends StatelessWidget {
                       overlayColor: Colors.white.withValues(alpha: 0.2),
                     ),
                     child: Text(
-                      "Login",
+                      AppStrings.loginButtonText,
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                   ),
@@ -142,7 +143,7 @@ class LoginScreen extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
-                        'Or Login With',
+                        AppStrings.orLoginWith,
                         style: TextStyle(color: Colors.black45),
                       ),
                     ),
@@ -179,7 +180,7 @@ class LoginScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Don\'t have an account? ',
+                      AppStrings.dontHaveAccount,
                       style: TextStyle(color: Colors.black54),
                     ),
                     TextButton(
@@ -191,7 +192,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         );
                       },
-                      child: Text('Register',
+                      child: Text(AppStrings.registerText,
                       style: TextStyle(
                         color: const Color.fromARGB(255, 56, 27, 163),
                         fontWeight: FontWeight.bold,
