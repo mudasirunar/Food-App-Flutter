@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_app/screens/home_screen.dart';
-import 'package:project_app/screens/profile_screen.dart';
-import 'package:project_app/screens/settings_screen.dart';
+import 'package:get/get.dart';
+import 'package:project_app/routes/app_routes.dart';
+import 'package:project_app/utils/app_strings.dart';
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
@@ -13,11 +13,11 @@ class CheckoutScreen extends StatefulWidget {
 class _CheckoutScreenState extends State<CheckoutScreen> {
   int _selectedIndex = 2;
 
-  final List<Widget> screens = [
-    const HomeScreen(),
-    const ProfileScreen(),
-    const CheckoutScreen(),
-    const SettingsScreen(),
+  final List<String> routes = [
+    AppRoutes.home,
+    AppRoutes.profile,
+    AppRoutes.checkout,
+    AppRoutes.settings,
   ];
 
   @override
@@ -30,14 +30,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
           onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const HomeScreen()),
-            );
+            Get.offNamed(AppRoutes.home);
           },
         ),
         title: const Text(
-          'Items in cart',
+          AppStrings.cartTitle,
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -83,7 +80,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text(
-                              'Noodles',
+                              AppStrings.cartItemNoodles,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -170,7 +167,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text(
-                              'Beef Burger',
+                              AppStrings.cartItemBeefBurger,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -226,7 +223,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             const SizedBox(height: 24),
 
             const Text(
-              'Order Instructions',
+              AppStrings.orderInstructions,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -253,7 +250,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Total:',
+                  AppStrings.totalLabel,
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -284,7 +281,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   ),
                 ),
                 child: const Text(
-                  'Checkout',
+                  AppStrings.checkoutButton,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -299,15 +296,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             Center(
               child: GestureDetector(
                 onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomeScreen(),
-                    ),
-                  );
+                  Get.offNamed(AppRoutes.home);
                 },
                 child: const Text(
-                  'Back to Menu',
+                  AppStrings.backToMenu,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -329,10 +321,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           });
 
           if (index != 2) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => screens[index]),
-            );
+            Get.offNamed(routes[index]);
           }
         },
         type: BottomNavigationBarType.fixed,
@@ -341,19 +330,19 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         items: [
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.home_rounded, 0),
-            label: 'Home',
+            label: AppStrings.navHome,
           ),
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.person_outline_rounded, 1),
-            label: 'Profile',
+            label: AppStrings.navProfile,
           ),
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.shopping_bag_outlined, 2),
-            label: 'Cart',
+            label: AppStrings.navCart,
           ),
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.settings_outlined, 3),
-            label: 'Settings',
+            label: AppStrings.navSettings,
           ),
         ],
       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_app/screens/home_screen.dart';
-import 'package:project_app/screens/checkout_screen.dart';
-import 'package:project_app/screens/settings_screen.dart';
+import 'package:get/get.dart';
+import 'package:project_app/routes/app_routes.dart';
+import 'package:project_app/utils/app_strings.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -13,11 +13,11 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   int _selectedIndex = 1;
 
-  final List<Widget> screens = [
-    const HomeScreen(),
-    const ProfileScreen(),
-    const CheckoutScreen(),
-    const SettingsScreen(),
+  final List<String> routes = [
+    AppRoutes.home,
+    AppRoutes.profile,
+    AppRoutes.checkout,
+    AppRoutes.settings,
   ];
 
   @override
@@ -28,15 +28,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
           onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const HomeScreen()),
-            );
+            Get.offNamed(AppRoutes.home);
           },
         ),
         centerTitle: false,
-        title: Text(
-          'Profile',
+        title: const Text(
+          AppStrings.profileTitle,
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -59,7 +56,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 70),
 
               const Text(
-                'Mudasir Ali',
+                AppStrings.profileName,
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
 
@@ -75,7 +72,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   SizedBox(width: 4),
                   Text(
-                    'Karachi, Pakistan',
+                    AppStrings.profileLocation,
                     style: TextStyle(fontSize: 14, color: Colors.black45),
                   ),
                 ],
@@ -84,7 +81,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 6),
 
               const Text(
-                'Gold Member 🏆',
+                AppStrings.profileMembership,
                 style: TextStyle(fontSize: 12, color: Colors.black45),
               ),
 
@@ -117,7 +114,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                         Text(
-                          'Orders',
+                          AppStrings.ordersStat,
                           style: TextStyle(color: Colors.black45, fontSize: 12),
                         ),
                       ],
@@ -148,7 +145,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                         Text(
-                          'Vouchers',
+                          AppStrings.vouchersStat,
                           style: TextStyle(color: Colors.black45, fontSize: 12),
                         ),
                       ],
@@ -179,7 +176,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                         Text(
-                          'Saved Food',
+                          AppStrings.savedFoodStat,
                           style: TextStyle(color: Colors.black45, fontSize: 12),
                         ),
                       ],
@@ -203,7 +200,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Icon(Icons.receipt_long, size: 16, color: Colors.white),
                     SizedBox(width: 10),
                     Text(
-                      'My Orders',
+                      AppStrings.myOrdersButton,
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.white,
@@ -239,7 +236,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         SizedBox(width: 8),
                         Text(
-                          'Address',
+                          AppStrings.addressButton,
                           style: TextStyle(fontSize: 14, color: Colors.black87),
                         ),
                       ],
@@ -266,7 +263,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         SizedBox(width: 8),
                         Text(
-                          'Payment',
+                          AppStrings.paymentButton,
                           style: TextStyle(fontSize: 14, color: Colors.black87),
                         ),
                       ],
@@ -308,10 +305,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           });
 
           if (index != 1) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => screens[index]),
-            );
+            Get.offNamed(routes[index]);
           }
         },
         type: BottomNavigationBarType.fixed,
@@ -320,19 +314,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
         items: [
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.home_rounded, 0),
-            label: 'Home',
+            label: AppStrings.navHome,
           ),
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.person_outline_rounded, 1),
-            label: 'Profile',
+            label: AppStrings.navProfile,
           ),
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.shopping_bag_outlined, 2),
-            label: 'Cart',
+            label: AppStrings.navCart,
           ),
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.settings_outlined, 3),
-            label: 'Settings',
+            label: AppStrings.navSettings,
           ),
         ],
       ),

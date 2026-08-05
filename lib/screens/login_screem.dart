@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project_app/screens/home_screen.dart';
-import 'package:project_app/screens/signup_screen.dart';
+import 'package:get/get.dart';
+import 'package:project_app/routes/app_routes.dart';
 import 'package:project_app/utils/app_strings.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -115,13 +115,7 @@ class LoginScreen extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeScreen(),
-                        ),
-                        (route) => false,
-                      );
+                      Get.offAllNamed(AppRoutes.home);
                     },
 
                     style: ElevatedButton.styleFrom(
@@ -185,12 +179,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SignupScreen(),
-                          ),
-                        );
+                        Get.toNamed(AppRoutes.signup);
                       },
                       child: Text(AppStrings.registerText,
                       style: TextStyle(

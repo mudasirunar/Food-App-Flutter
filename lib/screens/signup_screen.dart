@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_app/screens/home_screen.dart';
-import 'package:project_app/screens/login_screem.dart';
+import 'package:get/get.dart';
+import 'package:project_app/routes/app_routes.dart';
+import 'package:project_app/utils/app_strings.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -32,7 +33,7 @@ class SignupScreen extends StatelessWidget {
                         Image.asset('assets/images/app_logo.png', height: 90),
                         const SizedBox(height: 12),
                         const Text(
-                          'Create Account',
+                          AppStrings.createAccount,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 32,
@@ -59,8 +60,8 @@ class SignupScreen extends StatelessWidget {
                         Icons.person,
                         color: Color.fromARGB(255, 92, 39, 176),
                       ),
-                      hintText: 'Enter Your Name',
-                      label: const Text('Full Name'),
+                      hintText: AppStrings.nameHint,
+                      label: const Text(AppStrings.fullNameLabel),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
@@ -79,8 +80,8 @@ class SignupScreen extends StatelessWidget {
                         Icons.email,
                         color: Color.fromARGB(255, 92, 39, 176),
                       ),
-                      hintText: 'Enter Your Email',
-                      label: const Text('Email'),
+                      hintText: AppStrings.emailHint,
+                      label: const Text(AppStrings.emailLabel),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
@@ -100,8 +101,8 @@ class SignupScreen extends StatelessWidget {
                         Icons.lock,
                         color: Color.fromARGB(255, 92, 39, 176),
                       ),
-                      hintText: 'Enter Password',
-                      label: const Text('Password'),
+                      hintText: AppStrings.passwordHint,
+                      label: const Text(AppStrings.passwordLabel),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
@@ -121,8 +122,8 @@ class SignupScreen extends StatelessWidget {
                         Icons.lock_outline,
                         color: Color.fromARGB(255, 92, 39, 176),
                       ),
-                      hintText: 'Confirm Password',
-                      label: const Text('Confirm Password'),
+                      hintText: AppStrings.confirmPasswordHint,
+                      label: const Text(AppStrings.confirmPasswordLabel),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
@@ -140,19 +141,13 @@ class SignupScreen extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomeScreen(),
-                          ),
-                          (route) => false,
-                        );
+                        Get.offAllNamed(AppRoutes.home);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 92, 39, 176),
                       ),
                       child: const Text(
-                        "Sign Up",
+                        AppStrings.signUpButtonText,
                         style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
                     ),
@@ -162,20 +157,15 @@ class SignupScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        'Already have an account? ',
+                        AppStrings.alreadyHaveAccount,
                         style: TextStyle(color: Colors.black54),
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LoginScreen(),
-                            ),
-                          );
+                          Get.offNamed(AppRoutes.login);
                         },
                         child: const Text(
-                          'Login',
+                          AppStrings.loginText,
                           style: TextStyle(
                             color: Color.fromARGB(255, 56, 27, 163),
                             fontWeight: FontWeight.bold,

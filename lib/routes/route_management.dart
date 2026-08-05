@@ -1,4 +1,4 @@
-import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:get/get.dart';
 import 'package:project_app/routes/app_routes.dart';
 import 'package:project_app/screens/login_screem.dart';
 import 'package:project_app/screens/signup_screen.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_app/screens/profile_screen.dart';
-import 'package:project_app/screens/checkout_screen.dart';
-import 'package:project_app/screens/settings_screen.dart';
+import 'package:get/get.dart';
+import 'package:project_app/routes/app_routes.dart';
+import 'package:project_app/utils/app_strings.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,11 +13,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
-  final List<Widget> screens = [
-    const HomeScreen(),
-    const ProfileScreen(),
-    const CheckoutScreen(),
-    const SettingsScreen(),
+  final List<String> routes = [
+    AppRoutes.home,
+    AppRoutes.profile,
+    AppRoutes.checkout,
+    AppRoutes.settings,
   ];
 
   @override
@@ -26,8 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: false,
-        title: Text(
-          'Menu',
+        title: const Text(
+          AppStrings.menuTitle,
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               TextField(
                 decoration: InputDecoration(
-                  label: Text('Search', style: TextStyle(fontSize: 18)),
+                  label: const Text(AppStrings.searchHint, style: TextStyle(fontSize: 18)),
                   filled: true,
                   fillColor: Colors.black.withValues(alpha: 0.1),
 
@@ -80,15 +80,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 12),
-                      Text(
-                        'All',
+                      const SizedBox(height: 12),
+                      const Text(
+                        AppStrings.categoryAll,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
 
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Column(
                     children: [
                       Container(
@@ -99,18 +99,18 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderRadius: BorderRadius.circular(18),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(4),
+                          padding: const EdgeInsets.all(4),
                           child: Image.asset(
                             'assets/images/burger_1.png',
                             fit: BoxFit.contain,
                           ),
                         ),
                       ),
-                      SizedBox(height: 12),
-                      Text('Burger'),
+                      const SizedBox(height: 12),
+                      const Text(AppStrings.categoryBurger),
                     ],
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Column(
                     children: [
                       Container(
@@ -121,18 +121,18 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderRadius: BorderRadius.circular(18),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(4),
+                          padding: const EdgeInsets.all(4),
                           child: Image.asset(
                             'assets/images/pizza_1.png',
                             fit: BoxFit.contain,
                           ),
                         ),
                       ),
-                      SizedBox(height: 12),
-                      Text('Pizza'),
+                      const SizedBox(height: 12),
+                      const Text(AppStrings.categoryPizza),
                     ],
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Column(
                     children: [
                       Container(
@@ -143,23 +143,23 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderRadius: BorderRadius.circular(18),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(0),
+                          padding: const EdgeInsets.all(0),
                           child: Image.asset(
                             'assets/images/chicken_1.png',
                             fit: BoxFit.contain,
                           ),
                         ),
                       ),
-                      SizedBox(height: 12),
-                      Text('Chicken'),
+                      const SizedBox(height: 12),
+                      const Text(AppStrings.categoryChicken),
                     ],
                   ),
                 ],
               ),
 
-              SizedBox(height: 40),
-              Text(
-                'Promotions',
+              const SizedBox(height: 40),
+              const Text(
+                AppStrings.promotionsTitle,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
 
@@ -167,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 clipBehavior: Clip.none,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(top: 10),
                     height: 150,
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -175,12 +175,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsGeometry.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           Text(
-                            'Today`s Offer',
+                            AppStrings.todaysOffer,
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
@@ -189,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           SizedBox(height: 18),
                           Text(
-                            'Free Box of Fries',
+                            AppStrings.freeFriesOffer,
                             style: TextStyle(
                               fontSize: 24,
                               color: Colors.white,
@@ -198,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           SizedBox(height: 12),
                           Text(
-                            'on all orders above \$150',
+                            AppStrings.offerCondition,
                             style: TextStyle(fontSize: 16, color: Colors.white),
                           ),
                         ],
@@ -218,9 +218,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
 
-              SizedBox(height: 30),
-              Text(
-                'Popular',
+              const SizedBox(height: 30),
+              const Text(
+                AppStrings.popularTitle,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
               const SizedBox(height: 16),
@@ -255,7 +255,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Image.asset('assets/images/beef_burger.png'),
                           const SizedBox(height: 8),
                           const Text(
-                            'Beef Burger',
+                            AppStrings.beefBurger,
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8),
@@ -329,7 +329,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           const SizedBox(height: 8),
                           const Text(
-                            'Cheese Pizza',
+                            AppStrings.cheesePizza,
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8),
@@ -402,7 +402,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           const SizedBox(height: 8),
                           const Text(
-                            'Fried Chicken',
+                            AppStrings.friedChicken,
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8),
@@ -460,10 +460,7 @@ class _HomeScreenState extends State<HomeScreen> {
           });
 
           if (index != 0) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => screens[index]),
-            );
+            Get.offNamed(routes[index]);
           }
         },
         type: BottomNavigationBarType.fixed,
@@ -472,22 +469,22 @@ class _HomeScreenState extends State<HomeScreen> {
         items: [
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.home_rounded, 0),
-            label: 'Home',
+            label: AppStrings.navHome,
           ),
 
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.person_outline_rounded, 1),
-            label: 'Profile',
+            label: AppStrings.navProfile,
           ),
 
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.shopping_bag_outlined, 2),
-            label: 'Cart',
+            label: AppStrings.navCart,
           ),
 
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.settings_outlined, 3),
-            label: 'Settings',
+            label: AppStrings.navSettings,
           ),
         ],
       ),

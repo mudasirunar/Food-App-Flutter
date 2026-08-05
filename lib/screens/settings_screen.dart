@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_app/screens/home_screen.dart';
-import 'package:project_app/screens/login_screem.dart';
-import 'package:project_app/screens/profile_screen.dart';
-import 'package:project_app/screens/checkout_screen.dart';
+import 'package:get/get.dart';
+import 'package:project_app/routes/app_routes.dart';
+import 'package:project_app/utils/app_strings.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -19,11 +18,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool _notifications = true;
   bool _darkMode = false;
 
-  final List<Widget> screens = [
-    const HomeScreen(),
-    const ProfileScreen(),
-    const CheckoutScreen(),
-    const SettingsScreen(),
+  final List<String> routes = [
+    AppRoutes.home,
+    AppRoutes.profile,
+    AppRoutes.checkout,
+    AppRoutes.settings,
   ];
 
   @override
@@ -37,14 +36,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
           onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const HomeScreen()),
-            );
+            Get.offNamed(AppRoutes.home);
           },
         ),
         title: const Text(
-          'Settings',
+          AppStrings.settingsTitle,
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -59,7 +55,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Food Preferences',
+              AppStrings.foodPreferencesHeader,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -69,8 +65,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const SizedBox(height: 10),
             SwitchListTile(
               activeThumbColor: const Color.fromARGB(255, 92, 39, 176),
-              title: const Text('Vegetarian Only'),
-              subtitle: const Text('Show only vegetarian food items'),
+              title: const Text(AppStrings.vegetarianTitle),
+              subtitle: const Text(AppStrings.vegetarianSubtitle),
               value: _isVegetarian,
               onChanged: (val) {
                 setState(() {
@@ -81,8 +77,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const Divider(),
             SwitchListTile(
               activeThumbColor: const Color.fromARGB(255, 92, 39, 176),
-              title: const Text('Spicy Food Option'),
-              subtitle: const Text('Include extra spicy food choices'),
+              title: const Text(AppStrings.spicyTitle),
+              subtitle: const Text(AppStrings.spicySubtitle),
               value: _isSpicy,
               onChanged: (val) {
                 setState(() {
@@ -92,7 +88,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             const SizedBox(height: 20),
             const Text(
-              'App Settings',
+              AppStrings.appSettingsHeader,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -102,8 +98,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const SizedBox(height: 10),
             SwitchListTile(
               activeThumbColor: const Color.fromARGB(255, 92, 39, 176),
-              title: const Text('Push Notifications'),
-              subtitle: const Text('Get order updates and offer alerts'),
+              title: const Text(AppStrings.notificationsTitle),
+              subtitle: const Text(AppStrings.notificationsSubtitle),
               value: _notifications,
               onChanged: (val) {
                 setState(() {
@@ -114,8 +110,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const Divider(),
             SwitchListTile(
               activeThumbColor: const Color.fromARGB(255, 92, 39, 176),
-              title: const Text('Dark Mode'),
-              subtitle: const Text('Enable dark theme interface'),
+              title: const Text(AppStrings.darkModeTitle),
+              subtitle: const Text(AppStrings.darkModeSubtitle),
               value: _darkMode,
               onChanged: (val) {
                 setState(() {
@@ -129,7 +125,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Icons.location_on_outlined,
                 color: Color.fromARGB(255, 92, 39, 176),
               ),
-              title: const Text('Saved Addresses'),
+              title: const Text(AppStrings.savedAddresses),
               trailing: const Icon(Icons.arrow_forward_ios, size: 16),
               onTap: () {},
             ),
@@ -139,7 +135,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Icons.payment_outlined,
                 color: Color.fromARGB(255, 92, 39, 176),
               ),
-              title: const Text('Payment Methods'),
+              title: const Text(AppStrings.paymentMethods),
               trailing: const Icon(Icons.arrow_forward_ios, size: 16),
               onTap: () {},
             ),
@@ -149,13 +145,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               height: 50,
               child: ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const LoginScreen(),
-                    ),
-                    (route) => false,
-                  );
+                  Get.offAllNamed(AppRoutes.login);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.redAccent,
@@ -165,7 +155,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 icon: const Icon(Icons.logout, color: Colors.white),
                 label: const Text(
-                  'Logout',
+                  AppStrings.logoutButton,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -186,10 +176,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           });
 
           if (index != 3) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => screens[index]),
-            );
+            Get.offNamed(routes[index]);
           }
         },
         type: BottomNavigationBarType.fixed,
@@ -198,19 +185,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
         items: [
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.home_rounded, 0),
-            label: 'Home',
+            label: AppStrings.navHome,
           ),
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.person_outline_rounded, 1),
-            label: 'Profile',
+            label: AppStrings.navProfile,
           ),
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.shopping_bag_outlined, 2),
-            label: 'Cart',
+            label: AppStrings.navCart,
           ),
           BottomNavigationBarItem(
             icon: _buildNavIcon(Icons.settings_outlined, 3),
-            label: 'Settings',
+            label: AppStrings.navSettings,
           ),
         ],
       ),
