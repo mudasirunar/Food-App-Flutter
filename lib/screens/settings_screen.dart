@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_app/routes/app_routes.dart';
 import 'package:project_app/utils/app_strings.dart';
+import 'package:project_app/widgets/nav_icon.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -184,40 +185,35 @@ class _SettingsScreenState extends State<SettingsScreen> {
         showUnselectedLabels: false,
         items: [
           BottomNavigationBarItem(
-            icon: _buildNavIcon(Icons.home_rounded, 0),
+            icon: NavIcon(
+              iconData: Icons.home_rounded,
+              isSelected: _selectedIndex == 0,
+            ),
             label: AppStrings.navHome,
           ),
           BottomNavigationBarItem(
-            icon: _buildNavIcon(Icons.person_outline_rounded, 1),
+            icon: NavIcon(
+              iconData: Icons.person_outline_rounded,
+              isSelected: _selectedIndex == 1,
+            ),
             label: AppStrings.navProfile,
           ),
           BottomNavigationBarItem(
-            icon: _buildNavIcon(Icons.shopping_bag_outlined, 2),
+            icon: NavIcon(
+              iconData: Icons.shopping_bag_outlined,
+              isSelected: _selectedIndex == 2,
+            ),
             label: AppStrings.navCart,
           ),
           BottomNavigationBarItem(
-            icon: _buildNavIcon(Icons.settings_outlined, 3),
+            icon: NavIcon(
+              iconData: Icons.settings_outlined,
+              isSelected: _selectedIndex == 3,
+            ),
             label: AppStrings.navSettings,
           ),
         ],
       ),
     );
-  }
-
-  Widget _buildNavIcon(IconData iconData, int index) {
-    bool isSelected = _selectedIndex == index;
-
-    if (isSelected) {
-      return Container(
-        padding: const EdgeInsets.all(10),
-        decoration: const BoxDecoration(
-          color: Color.fromARGB(255, 92, 39, 176),
-          shape: BoxShape.circle,
-        ),
-        child: Icon(iconData, color: Colors.white, size: 24),
-      );
-    } else {
-      return Icon(iconData, color: Colors.grey, size: 24);
-    }
   }
 }
