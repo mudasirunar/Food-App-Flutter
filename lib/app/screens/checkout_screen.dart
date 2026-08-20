@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_app/routes/app_routes.dart';
-import 'package:project_app/utils/app_strings.dart';
-import 'package:project_app/widgets/nav_icon.dart';
+import 'package:project_app/app/routes/app_routes.dart';
+import 'package:project_app/app/utils/app_strings.dart';
+import 'package:project_app/app/widgets/nav_icon.dart';
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_app/routes/app_routes.dart';
-import 'package:project_app/utils/app_strings.dart';
+import 'package:project_app/app/routes/app_routes.dart';
+import 'package:project_app/app/utils/app_strings.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
